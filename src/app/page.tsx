@@ -1,66 +1,57 @@
 import Image from "next/image";
-import styles from "./page.module.css";
+import Header from "@/components/Header";
+import Services from "@/components/Services";
+import Philosophy from "@/components/Philosophy";
+import QuoteEngine from "@/components/Quotes";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+    <>
+      <Header />
+      <main className="content-wrapper">
+        <section className="hero-section">
+          {/* Fondo Inmersivo de Alta Calidad (Apple Style) */}
+          <div className="hero-bg-wrapper">
+            <Image 
+              src="/images/hero_light_premium.png"
+              alt="Industrial Engineering Background"
+              fill
+              priority
+              className="hero-image"
             />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+            <div className="hero-gradient-overlay"></div>
+          </div>
+          
+          <div className="hero-content">
+            <div className="hero-title-container animate-reveal delay-1">
+              <div className="accent-line"></div>
+              <span className="key-tooltip" style={{position:'static', opacity:1, transform:'none', color:'var(--accent-gold)', marginBottom:'10px', display:'block', fontSize:'0.9rem'}}>Ingeniería & Resultados</span>
+              <h1 className="headline-large">
+                Eficiencia <br /> Absoluta.
+              </h1>
+            </div>
+            <p className="subheadline animate-reveal delay-2" style={{maxWidth: '600px'}}>
+              Transformamos la complejidad industrial de tu empresa en rendimiento inteligente con metodologías puras Lean 4.0.
+            </p>
+            <div className="hero-actions animate-reveal delay-3">
+              <a href="#cotizador" className="btn-primary">
+                Iniciar Proyecto
+              </a>
+              <a href="#servicios" className="btn-secondary">
+                Ver Filosofía
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <Services />
+        <Philosophy />
+        <QuoteEngine />
       </main>
-    </div>
+      <Footer />
+    </>
   );
 }
+
+
