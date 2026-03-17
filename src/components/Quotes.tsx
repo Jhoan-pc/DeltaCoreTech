@@ -35,10 +35,30 @@ export default function QuoteEngine() {
     if (!selectedCompany) return;
     setStatus('submitting');
     try {
-      // Usar Supabase dummy fallback config logic
+      const { error } = await supabase
+        .from('quotes')
+        .insert([
+          { 
+            company_type: selectedCompany,
+            name: formData.name,
+            nit: formData.nit,
+            address: formData.address,
+            phone: formData.phone,
+            email: formData.email,
+            representative: formData.representative,
+            specific_data: { item: formData.item }
+          }
+        ]);
+
+      if (error) {
+        console.error('Error supabase:', error);
+        throw error;
+      }
+      
       setStatus('success');
+      setTimeout(() => setStatus('idle'), 5000); // Volver al estado normal después de 5s
     } catch (err) {
-      console.error(err);
+      console.error('Error insertando cotización:', err);
       setStatus('error');
     }
   };
